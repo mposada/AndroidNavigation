@@ -28,13 +28,15 @@ import androidx.navigation.Navigation
  */
 class FlowStepFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
 
-        val step = arguments?.getInt("step")
+        // val step = arguments?.getInt("step")
+
+        val step = arguments?.let {
+            val safeArgs = FlowStepFragmentArgs.fromBundle(it)
+            safeArgs.step
+        }
 
         // TODO STEP 9 - Use type-safe arguments - remove previous line!
 //        val step = arguments?.let {
